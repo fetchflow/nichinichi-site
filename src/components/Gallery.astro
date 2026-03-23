@@ -1,0 +1,48 @@
+---
+const shots = [
+  {
+    src: '/screenshots/goals.png',
+    alt: 'Goals view with active goals, step progress, and signal indicators',
+    label: 'Goal tracking',
+    color: '#a855f7',
+  },
+  {
+    src: '/screenshots/playbooks.png',
+    alt: 'Playbooks view showing a runbook with markdown preview',
+    label: 'Playbooks',
+    color: '#ec4899',
+  },
+  {
+    src: '/screenshots/reports.png',
+    alt: 'Reports view showing a weekly digest summary',
+    label: 'Reports',
+    color: '#3b82f6',
+  },
+];
+---
+
+<section class="py-16 px-6 border-t border-gray-800/60">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-center text-sm text-gray-500 uppercase tracking-widest font-mono mb-10">More views</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      {shots.map((shot) => (
+        <div class="group rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-colors">
+          <div class="overflow-hidden">
+            <img
+              src={shot.src}
+              alt={shot.alt}
+              class="w-full block group-hover:scale-[1.02] transition-transform duration-300"
+              width="600"
+              height="375"
+              loading="lazy"
+            />
+          </div>
+          <div class="px-4 py-3 bg-gray-900/60 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full" style={`background: ${shot.color}`}></span>
+            <span class="text-sm text-gray-400">{shot.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

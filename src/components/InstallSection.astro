@@ -1,0 +1,153 @@
+---
+---
+
+<section id="install" class="py-24 px-6 border-t border-gray-800/60">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Get started in 60 seconds</h2>
+    <p class="text-gray-400 text-lg mb-12">Pick your platform. All installs include both the CLI and the desktop app.</p>
+
+    <!-- Tab interface (pure CSS) -->
+    <div class="text-left">
+      <!-- Tabs -->
+      <div class="flex gap-1 mb-4 bg-gray-900/60 p-1 rounded-lg border border-gray-800 w-fit">
+        <label class="cursor-pointer">
+          <input type="radio" name="install-tab" id="tab-mac" class="sr-only" checked />
+          <span class="block px-4 py-2 rounded-md text-sm font-medium transition-colors tab-label" for="tab-mac">macOS</span>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="install-tab" id="tab-cargo" class="sr-only" />
+          <span class="block px-4 py-2 rounded-md text-sm font-medium transition-colors tab-label">Cargo</span>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="install-tab" id="tab-linux" class="sr-only" />
+          <span class="block px-4 py-2 rounded-md text-sm font-medium transition-colors tab-label">Linux</span>
+        </label>
+      </div>
+
+      <!-- Install blocks -->
+      <div id="install-mac" class="install-panel rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+          <span class="text-xs text-gray-500 font-mono">Terminal</span>
+        </div>
+        <div class="p-4 font-mono text-sm space-y-3">
+          <div>
+            <span class="text-gray-500"># Homebrew (recommended)</span>
+            <div class="mt-1 flex items-start gap-2">
+              <span class="text-green-400 mt-0.5">$</span>
+              <span class="text-gray-200">brew install fetchflow/tap/nichinichi</span>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-3">
+            <span class="text-gray-500"># Or download the .dmg directly</span>
+            <div class="mt-2">
+              <a
+                href="https://github.com/fetchflow/nichinichi/releases/latest"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 text-sm border border-gray-700 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                Download .dmg from GitHub Releases
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="install-cargo" class="install-panel hidden rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+          <span class="text-xs text-gray-500 font-mono">Terminal (Rust toolchain required)</span>
+        </div>
+        <div class="p-4 font-mono text-sm space-y-3">
+          <div>
+            <span class="text-gray-500"># Install the CLI from source</span>
+            <div class="mt-1 flex items-start gap-2">
+              <span class="text-green-400 mt-0.5">$</span>
+              <span class="text-gray-200">cargo install nichinichi-cli</span>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-3">
+            <span class="text-gray-500"># Or build from source</span>
+            <div class="mt-1 flex items-start gap-2">
+              <span class="text-green-400 mt-0.5">$</span>
+              <span class="text-gray-200 break-all">git clone https://github.com/fetchflow/nichinichi && cargo install --path apps/cli</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="install-linux" class="install-panel hidden rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+          <span class="text-xs text-gray-500 font-mono">Terminal</span>
+        </div>
+        <div class="p-4 font-mono text-sm space-y-3">
+          <div>
+            <span class="text-gray-500"># Download the latest release binary</span>
+            <div class="mt-2">
+              <a
+                href="https://github.com/fetchflow/nichinichi/releases/latest"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 text-sm border border-gray-700 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                Download from GitHub Releases
+              </a>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-3">
+            <span class="text-gray-500"># Or install via cargo</span>
+            <div class="mt-1 flex items-start gap-2">
+              <span class="text-green-400 mt-0.5">$</span>
+              <span class="text-gray-200">cargo install nichinichi-cli</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post-install -->
+      <div class="mt-6 p-5 rounded-xl bg-gray-900/40 border border-gray-800">
+        <p class="text-xs text-gray-500 font-mono uppercase tracking-wider mb-3">After installing</p>
+        <div class="font-mono text-sm space-y-2 text-gray-300">
+          <div><span class="text-green-400">$</span> <span class="ml-2">nichinichi "first entry #log"</span></div>
+          <div class="text-gray-500 ml-6">Creates ~/nichinichi/ and logs your first entry.</div>
+          <div class="mt-2"><span class="text-green-400">$</span> <span class="ml-2">nichinichi sync --rebuild</span></div>
+          <div class="text-gray-500 ml-6">Builds the SQLite index from your markdown files.</div>
+          <div class="mt-2"><span class="text-green-400">$</span> <span class="ml-2">open -a nichinichi</span><span class="text-gray-500 ml-4"># or launch from /Applications</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab switching
+  const radios = document.querySelectorAll<HTMLInputElement>('input[name="install-tab"]');
+  const panels = document.querySelectorAll<HTMLElement>('.install-panel');
+  const panelIds = ['install-mac', 'install-cargo', 'install-linux'];
+
+  radios.forEach((radio, i) => {
+    radio.addEventListener('change', () => {
+      panels.forEach(p => p.classList.add('hidden'));
+      document.getElementById(panelIds[i])?.classList.remove('hidden');
+
+      // Update tab label styles
+      document.querySelectorAll('.tab-label').forEach((label, j) => {
+        if (j === i) {
+          label.classList.add('bg-gray-700', 'text-white');
+          label.classList.remove('text-gray-400');
+        } else {
+          label.classList.remove('bg-gray-700', 'text-white');
+          label.classList.add('text-gray-400');
+        }
+      });
+    });
+  });
+
+  // Set initial active state
+  document.querySelector('.tab-label')?.classList.add('bg-gray-700', 'text-white');
+</script>
