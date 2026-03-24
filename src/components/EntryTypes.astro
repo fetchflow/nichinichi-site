@@ -1,0 +1,86 @@
+---
+const types = [
+  {
+    name: 'score',
+    color: '#22c55e',
+    label: 'Score',
+    description: 'Shipped, merged, closed, unblocked. Evidence of impact.',
+    example: '16:48 | fixed, merged, Sarah unblocked @acme #score',
+  },
+  {
+    name: 'solution',
+    color: '#3b82f6',
+    label: 'Solution',
+    description: 'Bugs fixed, workarounds found. What worked and why.',
+    example: '11:32 | jwt refresh swallowing errors — fixed @acme #solution',
+  },
+  {
+    name: 'decision',
+    color: '#a855f7',
+    label: 'Decision',
+    description: 'Architecture choices, tradeoffs, things you picked or rejected.',
+    example: '14:00 | chose postgres over sqlite — better json support #decision',
+  },
+  {
+    name: 'reflection',
+    color: '#ec4899',
+    label: 'Reflection',
+    description: 'Realisations, learnings, things you finally understood.',
+    example: '17:30 | slow morning but strong finish — momentum matters #reflection',
+  },
+  {
+    name: 'ai',
+    color: '#f59e0b',
+    label: 'AI',
+    description: 'Queries you sent to AI and what you accepted or rejected.',
+    example: '14:15 | claude suggested localStorage — rejected, xss risk #ai',
+  },
+  {
+    name: 'log',
+    color: '#6b7280',
+    label: 'Log',
+    description: 'General activity. The catch-all when nothing else fits.',
+    example: '09:05 | picking up the auth refactor @acme #log',
+  },
+];
+---
+
+<section class="py-24 px-6 border-t border-gray-800/60">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Six entry types</h2>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">
+        Tag what you log, and let the app surface patterns over time.
+        Auto-inferred from keywords if you skip the tag.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {types.map((t) => (
+        <div class="p-5 rounded-xl bg-gray-900/60 border border-gray-800 hover:border-gray-700 transition-colors">
+          <div class="flex items-center gap-2 mb-3">
+            <span
+              class={`type-${t.name} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border font-mono`}
+            >
+              #{t.name}
+            </span>
+          </div>
+          <p class="text-sm text-gray-400 mb-3 leading-relaxed">{t.description}</p>
+          <code class="text-xs text-gray-500 font-mono leading-relaxed block">{t.example}</code>
+        </div>
+      ))}
+    </div>
+
+    <!-- Entry format callout -->
+    <div class="mt-10 p-5 rounded-xl bg-gray-900 border border-gray-800">
+      <p class="text-xs text-gray-500 font-mono mb-2 uppercase tracking-wider">Entry format</p>
+      <pre class="font-mono text-sm text-gray-300 leading-7 overflow-x-auto">---
+<span class="text-gray-400">HH:MM</span> | <span class="text-white">body text</span> <span class="text-blue-400">@org</span> <span class="text-green-400">#type</span> <span class="text-gray-500">#extra-tags</span>
+
+       Optional detail block (indented lines)
+       Root cause: ...
+       Fix: ...
+---</pre>
+    </div>
+  </div>
+</section>
