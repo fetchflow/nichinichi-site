@@ -1,10 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL;
 const steps = [
   {
     number: '01',
     title: 'Log',
     description: 'One command to capture what you\'re doing — decision, fix, score, or just a note. Type-tag it, org-tag it, move on. Takes under 5 seconds.',
-    screenshot: '/screenshots/log-feed.png',
+    screenshot: `${base}screenshots/log-feed.png`,
     alt: 'Log feed view showing the entry composer and recent entries with type badges',
     color: '#22c55e',
   },
@@ -12,7 +13,7 @@ const steps = [
     number: '02',
     title: 'Review',
     description: 'Open the desktop app at any time. Dashboard shows a GitHub-style heatmap, type breakdown, goal progress, and today\'s full log. No setup, no sync.',
-    screenshot: '/screenshots/dashboard.png',
+    screenshot: `${base}screenshots/dashboard.png`,
     alt: 'Dashboard view showing heatmap, entry type breakdown, and goal progress',
     color: '#3b82f6',
   },
@@ -20,7 +21,7 @@ const steps = [
     number: '03',
     title: 'Ask',
     description: 'Open the AI panel and ask anything about your history. Context is built from your own entries via FTS5 full-text search. Your API key, your data.',
-    screenshot: '/screenshots/ai-panel.png',
+    screenshot: `${base}screenshots/ai-panel.png`,
     alt: 'AI panel showing a question and streaming answer sourced from entry history',
     color: '#f59e0b',
   },
