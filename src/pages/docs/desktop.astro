@@ -1,0 +1,393 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<Base
+  title="Desktop App Tutorial — Nichinichi"
+  description="Step-by-step guide to the nichinichi desktop app — dashboard, log feed, goals, playbooks, AI panel, and settings."
+>
+  <Nav />
+  <main class="pt-24 pb-16 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Header -->
+      <div class="mb-12">
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <a href={base} class="hover:text-white transition-colors">Home</a>
+          <span>/</span>
+          <a href={`${base}docs`} class="hover:text-white transition-colors">Docs</a>
+          <span>/</span>
+          <span class="text-gray-300">Desktop App Tutorial</span>
+        </div>
+        <h1 class="text-4xl font-bold text-white mb-4">Desktop App Tutorial</h1>
+        <p class="text-lg text-gray-400">
+          The nichinichi desktop app (built with Tauri + React) gives you a full GUI for your journal — heatmaps, goal tracking, a markdown playbook editor, and a multi-turn AI chat panel.
+        </p>
+      </div>
+
+      <!-- Table of Contents -->
+      <nav class="mb-12 p-5 rounded-xl bg-gray-900 border border-gray-800">
+        <p class="text-xs font-mono text-gray-500 uppercase tracking-wider mb-3">On this page</p>
+        <ol class="space-y-1.5 text-sm">
+          <li><a href="#launch" class="text-gray-400 hover:text-white transition-colors">1. Launching the app</a></li>
+          <li><a href="#dashboard" class="text-gray-400 hover:text-white transition-colors">2. Dashboard</a></li>
+          <li><a href="#log" class="text-gray-400 hover:text-white transition-colors">3. Log feed &amp; entry composer</a></li>
+          <li><a href="#goals" class="text-gray-400 hover:text-white transition-colors">4. Goals view</a></li>
+          <li><a href="#playbooks" class="text-gray-400 hover:text-white transition-colors">5. Playbooks editor</a></li>
+          <li><a href="#ai-panel" class="text-gray-400 hover:text-white transition-colors">6. AI panel</a></li>
+          <li><a href="#reports" class="text-gray-400 hover:text-white transition-colors">7. Reports &amp; digests</a></li>
+          <li><a href="#settings" class="text-gray-400 hover:text-white transition-colors">8. Settings</a></li>
+        </ol>
+      </nav>
+
+      <!-- 1. Launch -->
+      <section id="launch" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">1. Launching the app</h2>
+        <p class="text-gray-400 mb-4">
+          After installing, open the app from your Applications folder or launch it from the terminal:
+        </p>
+
+        <div class="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden mb-4">
+          <div class="px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+            <span class="text-xs text-gray-500 font-mono">Terminal (macOS)</span>
+          </div>
+          <div class="p-4 font-mono text-sm space-y-2">
+            <div class="flex items-start gap-2">
+              <span class="text-green-400">$</span>
+              <span class="text-gray-200">open -a nichinichi</span>
+            </div>
+            <div class="text-gray-500 pl-6">Or: double-click Nichinichi.app in /Applications</div>
+          </div>
+        </div>
+
+        <p class="text-gray-400 text-sm mb-4">
+          The app lives in the menu bar when minimized. Left-click the tray icon to show the window; right-click for <strong class="text-white">Sync now</strong> or <strong class="text-white">Quit</strong>.
+        </p>
+
+        <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800 text-sm text-gray-400">
+          <strong class="text-white">Auto-launch on login:</strong> Enable this in <strong class="text-white">Settings → Auto-launch</strong> so nichinichi starts with your Mac and is always ready in the tray.
+        </div>
+      </section>
+
+      <!-- 2. Dashboard -->
+      <section id="dashboard" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">2. Dashboard</h2>
+        <p class="text-gray-400 mb-6">
+          The Dashboard is your home view — a bird's-eye view of your journaling history and active goals.
+        </p>
+
+        <div class="space-y-4 mb-6">
+          <div class="flex gap-4 p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <div class="w-8 h-8 shrink-0 rounded bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 text-sm font-bold">H</div>
+            <div>
+              <p class="text-white font-medium text-sm mb-1">Activity heatmap</p>
+              <p class="text-gray-400 text-sm">GitHub-style grid showing entry density over the past year. Dark squares = heavy days. Click any cell to jump to that day's entries.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <div class="w-8 h-8 shrink-0 rounded bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-sm font-bold">T</div>
+            <div>
+              <p class="text-white font-medium text-sm mb-1">Type breakdown</p>
+              <p class="text-gray-400 text-sm">Stacked bar chart of your entries by type (log, solution, decision, reflection, score, ai). Shows what kind of work you've been doing.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <div class="w-8 h-8 shrink-0 rounded bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-sm font-bold">G</div>
+            <div>
+              <p class="text-white font-medium text-sm mb-1">Goal snapshot</p>
+              <p class="text-gray-400 text-sm">Active goals with step completion counts and progress signals. A quick check on what's in flight.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <div class="w-8 h-8 shrink-0 rounded bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 text-sm font-bold">S</div>
+            <div>
+              <p class="text-white font-medium text-sm mb-1">Stats cards</p>
+              <p class="text-gray-400 text-sm">Total entries, entries this week, average per day. All numbers respect the active org filter in the sidebar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800 text-sm text-gray-400">
+          <strong class="text-white">Org filter:</strong> Use the workspace switcher at the top of the sidebar to scope the entire Dashboard to one project or org. Selecting <em>All</em> shows everything.
+        </div>
+      </section>
+
+      <!-- 3. Log feed -->
+      <section id="log" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">3. Log feed &amp; entry composer</h2>
+        <p class="text-gray-400 mb-6">
+          The Log view is a reverse-chronological feed of every entry you've logged. You can also create new entries here without switching to the terminal.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mb-3">Entry composer</h3>
+        <p class="text-gray-400 text-sm mb-4">
+          Type your entry in the text field at the top of the Log view. Below the input is a chip toolbar — click any chip to insert it at the cursor:
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4 p-4 rounded-xl bg-gray-900 border border-gray-800">
+          <span class="px-2 py-1 rounded text-xs font-mono border type-solution">#solution</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border type-decision">#decision</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border type-reflection">#reflection</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border type-score">#score</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border type-ai">#ai</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border type-log">#log</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border border-gray-700 text-gray-400">@dayflow</span>
+          <span class="px-2 py-1 rounded text-xs font-mono border border-gray-700 text-gray-400">@kiban</span>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-3 mt-6">Feed</h3>
+        <p class="text-gray-400 text-sm mb-4">Each entry card in the feed shows:</p>
+        <ul class="space-y-2 text-sm text-gray-400 mb-6 pl-4">
+          <li class="flex gap-2"><span class="text-gray-600">—</span> Timestamp (relative: "5m ago", "2h ago", or full date for older entries)</li>
+          <li class="flex gap-2"><span class="text-gray-600">—</span> Entry body and optional detail block (indented follow-up text)</li>
+          <li class="flex gap-2"><span class="text-gray-600">—</span> Type pill and org pill</li>
+          <li class="flex gap-2"><span class="text-gray-600">—</span> Any custom tags</li>
+        </ul>
+
+        <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800 text-sm text-gray-400">
+          <strong class="text-white">Privacy:</strong> Entries in <code class="font-mono text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded">~/nichinichi/.quiet/</code> are never shown in the feed, never included in AI context, and never synced to any external service.
+        </div>
+      </section>
+
+      <!-- 4. Goals -->
+      <section id="goals" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">4. Goals view</h2>
+        <p class="text-gray-400 mb-4">
+          The Goals view lists every active goal with its steps and progress signal. Changes you make here write back directly to the goal's markdown file.
+        </p>
+
+        <div class="space-y-4 mb-6">
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Steps &amp; checkboxes</p>
+            <p class="text-gray-400 text-sm">Each goal's steps render as checkboxes. Checking a step updates the markdown file and recalculates the progress signal.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Progress signals</p>
+            <p class="text-gray-400 text-sm mb-3">The signal is derived from how many related log entries appear in a rolling window:</p>
+            <div class="flex flex-wrap gap-2 font-mono text-xs">
+              <span class="px-2 py-1 rounded bg-green-500/10 border border-green-500/30 text-green-400">breakthrough</span>
+              <span class="px-2 py-1 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400">strong</span>
+              <span class="px-2 py-1 rounded bg-gray-500/10 border border-gray-500/30 text-gray-300">steady</span>
+              <span class="px-2 py-1 rounded bg-yellow-500/10 border border-yellow-500/30 text-yellow-400">moderate</span>
+              <span class="px-2 py-1 rounded bg-orange-500/10 border border-orange-500/30 text-orange-400">struggling</span>
+              <span class="px-2 py-1 rounded bg-gray-700/50 border border-gray-700 text-gray-500">quiet</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Archive / done</p>
+            <p class="text-gray-400 text-sm">Mark a goal done from the overflow menu. It moves to <code class="font-mono text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded">goals/archive/</code> and the completion date is recorded in the frontmatter.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Playbooks -->
+      <section id="playbooks" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">5. Playbooks editor</h2>
+        <p class="text-gray-400 mb-4">
+          The Playbooks view has a two-panel layout: markdown source on the left, live preview on the right. All changes save directly to the markdown file in <code class="font-mono text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded text-sm">~/nichinichi/playbooks/</code>.
+        </p>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex gap-3 items-start p-4 rounded-lg bg-gray-900 border border-gray-800 text-sm">
+            <span class="shrink-0 w-6 h-6 rounded bg-gray-800 border border-gray-700 text-gray-400 flex items-center justify-center text-xs font-bold">+</span>
+            <div>
+              <span class="text-white font-medium">New playbook</span>
+              <span class="text-gray-400"> — click the + button in the sidebar header. Enter a title; a blank markdown template is created and opened immediately.</span>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start p-4 rounded-lg bg-gray-900 border border-gray-800 text-sm">
+            <span class="shrink-0 w-6 h-6 rounded bg-gray-800 border border-gray-700 text-gray-400 flex items-center justify-center text-xs font-bold">✎</span>
+            <div>
+              <span class="text-white font-medium">Edit</span>
+              <span class="text-gray-400"> — type in the left panel. The preview updates live as you type. Standard markdown: headings, checklists, code blocks all render.</span>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start p-4 rounded-lg bg-gray-900 border border-gray-800 text-sm">
+            <span class="shrink-0 w-6 h-6 rounded bg-gray-800 border border-gray-700 text-gray-400 flex items-center justify-center text-xs font-bold">⋯</span>
+            <div>
+              <span class="text-white font-medium">Delete</span>
+              <span class="text-gray-400"> — use the overflow menu next to any playbook in the list. Deletes the markdown file from disk (no undo — use git if you need history).</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. AI panel -->
+      <section id="ai-panel" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">6. AI panel</h2>
+        <p class="text-gray-400 mb-4">
+          The AI panel slides in from the right side of any view. Toggle it with the AI button in the header. It supports multi-turn conversation over your journal.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mb-3">Querying your history</h3>
+        <p class="text-gray-400 text-sm mb-4">
+          Ask anything about your past work. nichinichi searches your entries with full-text search (FTS5), then streams an AI response based on the matching context.
+        </p>
+
+        <div class="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden mb-6">
+          <div class="px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+            <span class="text-xs text-gray-500 font-mono">Example queries</span>
+          </div>
+          <div class="p-4 text-sm space-y-2">
+            <div class="flex gap-3">
+              <span class="text-gray-600 shrink-0">›</span>
+              <span class="text-gray-300">"when did I fix the race condition in the job queue?"</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-gray-600 shrink-0">›</span>
+              <span class="text-gray-300">"what architectural decisions did I make last month?"</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-gray-600 shrink-0">›</span>
+              <span class="text-gray-300">"summarize my progress on the billing integration"</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-gray-600 shrink-0">›</span>
+              <span class="text-gray-300">"what have I been struggling with this week?"</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-3">Creating entries from chat</h3>
+        <p class="text-gray-400 text-sm mb-4">
+          Tell the AI to log something for you. It generates a pre-filled card with editable fields — body, type, org — that you review before saving.
+        </p>
+
+        <div class="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden mb-6">
+          <div class="px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+            <span class="text-xs text-gray-500 font-mono">Example</span>
+          </div>
+          <div class="p-4 text-sm space-y-3">
+            <div class="flex gap-3">
+              <span class="text-gray-500 shrink-0 font-mono">You:</span>
+              <span class="text-gray-300">Log that I just fixed the memory leak in the worker pool</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-gray-500 shrink-0 font-mono">AI:</span>
+              <div>
+                <span class="text-gray-300">Got it. Here's a draft entry — edit and save when ready:</span>
+                <div class="mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700">
+                  <div class="text-gray-300 text-xs font-mono mb-2">Entry card</div>
+                  <div class="text-gray-200 text-sm">fixed memory leak in worker pool — goroutines were not released on timeout</div>
+                  <div class="flex gap-2 mt-2">
+                    <span class="px-2 py-0.5 rounded text-xs font-mono border type-solution">#solution</span>
+                    <span class="px-2 py-0.5 rounded text-xs font-mono border border-gray-700 text-gray-400">@backend</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-semibold text-white mb-3">Conversation history</h3>
+        <p class="text-gray-400 text-sm mb-4">
+          Past conversations are saved to <code class="font-mono text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded">~/nichinichi/ai/</code>. Browse, rename, resume, or archive them from the history panel inside the AI sidebar.
+        </p>
+
+        <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800 text-sm text-gray-400">
+          <strong class="text-white">Context scoping:</strong> If an org is selected in the sidebar, the AI panel only searches that org's entries. Switch to <em>All</em> for a cross-project view. Entries in <code class="font-mono text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded">.quiet/</code> are always excluded.
+        </div>
+      </section>
+
+      <!-- 7. Reports -->
+      <section id="reports" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">7. Reports &amp; digests</h2>
+        <p class="text-gray-400 mb-4">
+          The Reports view generates AI-written summaries of your journal over a time period — useful for weekly reviews, standups, or performance check-ins.
+        </p>
+
+        <div class="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden mb-4">
+          <div class="px-4 py-2.5 bg-gray-800/40 border-b border-gray-800">
+            <span class="text-xs text-gray-500 font-mono">How to generate a digest</span>
+          </div>
+          <div class="p-4 text-sm space-y-3 text-gray-400">
+            <div class="flex gap-3">
+              <span class="text-white font-mono shrink-0">1.</span>
+              <span>Go to the <strong class="text-white">Reports</strong> view in the sidebar.</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-white font-mono shrink-0">2.</span>
+              <span>Select a period: <strong class="text-white">Weekly</strong> or <strong class="text-white">Monthly</strong>.</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-white font-mono shrink-0">3.</span>
+              <span>Click <strong class="text-white">Generate digest</strong>. The AI panel opens and streams a summary of your entries for that period.</span>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-white font-mono shrink-0">4.</span>
+              <span>The digest is saved to <code class="font-mono text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded">~/nichinichi/ai/</code> and listed in the Reports view for later reference.</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-gray-400 text-sm">
+          Each digest shows entry counts by type and a trend analysis. You can generate multiple digests for the same period — they're appended, not overwritten.
+        </p>
+      </section>
+
+      <!-- 8. Settings -->
+      <section id="settings" class="mb-16 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-6">8. Settings</h2>
+        <p class="text-gray-400 mb-6">
+          Open Settings from the bottom of the sidebar. Changes take effect immediately — no Save button required unless noted.
+        </p>
+
+        <div class="space-y-4">
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">AI provider</p>
+            <p class="text-gray-400 text-sm">Toggle between <strong class="text-white">Ollama</strong> (local) and <strong class="text-white">Open WebUI</strong> (or any OpenAI-compatible endpoint). The base URL auto-fills with the default for each provider. Your custom URL is preserved on toggle.</p>
+            <div class="mt-3 font-mono text-xs text-gray-500 space-y-1">
+              <div>Ollama default: <span class="text-gray-300">http://localhost:11434</span></div>
+              <div>Open WebUI default: <span class="text-gray-300">http://localhost:3000</span></div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Model</p>
+            <p class="text-gray-400 text-sm">A dropdown lists all models available from your configured provider. The selection takes effect on the next message — no restart needed.</p>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Nichinichi folder</p>
+            <p class="text-gray-400 text-sm">Click <strong class="text-white">Browse</strong> to pick a different journal directory. Useful if you store your journal in a synced location (iCloud Drive, Dropbox, etc.).</p>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Tags &amp; workspaces</p>
+            <p class="text-gray-400 text-sm">Add custom tags with colors and define workspace names. These appear in the chip toolbar in the Log view and in the org filter dropdown.</p>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Auto-launch (macOS)</p>
+            <p class="text-gray-400 text-sm">Registers a LaunchAgent so nichinichi starts at login and sits in the menu bar. Toggle off to remove the LaunchAgent.</p>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-900 border border-gray-800">
+            <p class="text-white font-medium text-sm mb-2">Editor</p>
+            <p class="text-gray-400 text-sm">Sets the <code class="font-mono text-gray-300 bg-gray-800 px-1 py-0.5 rounded text-xs">$EDITOR</code> fallback used by the CLI when creating or editing playbooks and goals.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Next steps -->
+      <section class="border-t border-gray-800 pt-12">
+        <h2 class="text-xl font-bold text-white mb-4">Next steps</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href={`${base}docs/cli`} class="group p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-600 transition-colors">
+            <p class="font-semibold text-white mb-1 group-hover:text-green-400 transition-colors">CLI tutorial →</p>
+            <p class="text-sm text-gray-400">All CLI commands — entry types, goals, playbooks, AI ask, sync.</p>
+          </a>
+          <a href="https://github.com/fetchflow/nichinichi" target="_blank" rel="noopener noreferrer" class="group p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-600 transition-colors">
+            <p class="font-semibold text-white mb-1 group-hover:text-green-400 transition-colors">GitHub →</p>
+            <p class="text-sm text-gray-400">Source code, issues, and releases.</p>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <Footer />
+</Base>
