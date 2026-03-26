@@ -91,7 +91,7 @@
     <!-- App screenshot -->
     <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-gray-700/60 shadow-[0_0_80px_rgba(0,0,0,0.6)] ring-1 ring-white/5">
       <img
-        src={`${import.meta.env.BASE_URL}screenshots/dashboard.png`}
+        src={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}screenshots/dashboard.png`}
         alt="Nichinichi dashboard showing heatmap, entry type breakdown, and goal progress"
         class="w-full block"
         width="1280"

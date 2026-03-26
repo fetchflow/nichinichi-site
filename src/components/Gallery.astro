@@ -1,19 +1,20 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const shots = [
   {
-    src: '/screenshots/goals.png',
+    src: `${base}screenshots/goals.png`,
     alt: 'Goals view with active goals, step progress, and signal indicators',
     label: 'Goal tracking',
     color: '#a855f7',
   },
   {
-    src: '/screenshots/playbooks.png',
+    src: `${base}screenshots/playbooks.png`,
     alt: 'Playbooks view showing a runbook with markdown preview',
     label: 'Playbooks',
     color: '#ec4899',
   },
   {
-    src: '/screenshots/reports.png',
+    src: `${base}screenshots/reports.png`,
     alt: 'Reports view showing a weekly digest summary',
     label: 'Reports',
     color: '#3b82f6',
