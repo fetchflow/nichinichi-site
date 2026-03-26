@@ -1,0 +1,52 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<Base
+  title="Docs — Nichinichi"
+  description="Guides and tutorials for the nichinichi CLI and desktop app."
+>
+  <Nav />
+  <main class="pt-24 pb-16 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="mb-12">
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <a href={base} class="hover:text-white transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-gray-300">Docs</span>
+        </div>
+        <h1 class="text-4xl font-bold text-white mb-4">Documentation</h1>
+        <p class="text-lg text-gray-400">Guides for getting the most out of nichinichi.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5">
+        <a href={`${base}docs/cli`} class="group p-6 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-600 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <p class="font-semibold text-white mb-2 group-hover:text-green-400 transition-colors">CLI Tutorial</p>
+          <p class="text-sm text-gray-400">Installation, logging entries, entry types, goals, playbooks, AI ask, sync, and archive.</p>
+        </a>
+
+        <a href={`${base}docs/desktop`} class="group p-6 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-600 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <p class="font-semibold text-white mb-2 group-hover:text-green-400 transition-colors">Desktop App Tutorial</p>
+          <p class="text-sm text-gray-400">Dashboard, log feed, goals, playbooks editor, AI panel, reports, and settings.</p>
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <Footer />
+</Base>
